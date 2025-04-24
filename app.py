@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 st.title("🎓 University Green Space & Wellbeing Predictor")
 
 # Load dataset
-df = pd.read_csv("university_student_wellbeing.csv")
+df = pd.read_csv("university_student_wellbeing_synthetic.csv")
 
 # Features and target
 features = ["NDVI Score", "Tree Density", "Green Space Area (sq.meters)",
