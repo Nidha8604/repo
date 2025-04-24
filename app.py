@@ -1,45 +1,55 @@
 import streamlit as st
 import pandas as pd
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble 
+import RandomForestRegressor
 
-# Load Excel file
-@st.cache_data
-def load_data():
-    df = pd.read_excel("Bookc2excek.xlsx", sheet_name="Sheet1")
-    df.fillna(df.mean(numeric_only=True), inplace=True)
-    df = pd.get_dummies(df, columns=["Gender", "Green Space Type"], drop_first=True)
-    return df
+st.set_page_config(page_title="Green Wellbeing Predictor", layout="centered")
 
-df = load_data()
+st.title("🌿 Green Campus Wellbeing Predictor")
 
-# Feature selection
-features = ["NDVI Score", "Tree Density", "Green Space Area (sq.meters)",
-            "Walking Distance (mins)", "Shade Coverage (%)"]
-X = df[features]
-y = df["Predicted Wellbeing Score"]
+# Upload dataset
+uploaded_file = st.file_uploader("Upload your wellbeing dataset (CSV or Excel)", type="csv")
 
-# Train model
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
-model = RandomForestRegressor(n_estimators=200, max_depth=10, random_state=42)
-model.fit(X_scaled, y)
+if uploaded_file is not None:
+    # Read the dataset
+    if uploaded_file.name.endswith(".csv"):
+        df = pd.read_csv(uploaded_file)
+    else:
+        df = pd.read_excel(uploaded_file)
 
-# UI
-st.title("🌿 Green Space & Student Wellbeing Predictor")
+    st.success("✅ Data loaded successfully!")
+    st.write("Sample of the dataset:")
+    st.dataframe(df.head())
 
-ndvi = st.slider("NDVI Score", 0.0, 1.0, 0.7)
-tree_density = st.slider("Tree Density", 0, 10, 5)
-area = st.number_input("Green Space Area (sq. meters)", 1000, 10000, 5000)
-walk = st.slider("Walking Distance (mins)", 0, 30, 10)
-shade = st.slider("Shade Coverage (%)", 0, 100, 50)
+    # Features and target
+    features = ["NDVI Score", "Tree Density", "Green Space Area (sq.meters)",
+                "Walking Distance (mins)", "Shade Coverage (%)", "Sleep Hours"]
+    target = "Predicted Wellbeing Score"
 
-# Prediction
-input_df = pd.DataFrame([[ndvi, tree_density, area, walk, shade]],
-                        columns=features)
+    # Train model
+    X = df[features]
+    y = df[target]
+    model = RandomForestRegressor(n_estimators=100, random_state=42)
+    model.fit(X, y)
 
-scaled_input = scaler.transform(input_df)
-prediction = model.predict(scaled_input)
+    # Inputs
+    st.subheader("🎯 Input Green Space Features")
 
-st.success(f"🧠 Predicted Wellbeing Score: {round(prediction[0], 2)}")
+    ndvi = st.slider("NDVI Score", 0.0, 1.0, 0.75)
+    tree_density = st.slider("Tree Density", 0, 15, 7)
+    area = st.number_input("Green Space Area (sq. meters)", 100, 10000, 5000)
+    walk = st.slider("Walking Distance (mins)", 0, 30, 10)
+    shade = st.slider("Shade Coverage (%)", 0.0, 100.0, 60.0)
+    sleep = st.slider("Sleep Hours (per day)", 0, 12, 7)
+
+    input_df = pd.DataFrame([[ndvi, tree_density, area, walk, shade, sleep]],
+                            columns=features)
+
+    prediction = model.predict(input_df)[0]
+
+    st.markdown("---")
+    st.subheader("🧠 Predicted Wellbeing Score")
+    st.metric("Wellbeing Score", f"{prediction:.2f}")
+
+else:
+    st.info("📤 Please upload a dataset to begin.")
