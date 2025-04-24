@@ -1,0 +1,21 @@
+University,Student ID,Age,Gender,Academic Stress Level,Anxiety Level,Depression Level,Sleep Hours,Physical Activity Level,Green Space Area (sq.meters),Tree Count,NDVI Score,Tree Density,Walking Distance (mins),Shade Coverage (%),University ID,Predicted Wellbeing Score
+Harvard University,1,24,Female,3,4,8,7.5,6,5729,482,0.54,9,17,85.38,1,8.5
+Stanford University,2,21,Male,7,7,7,7.6,10,9700,320,0.34,4,4,64.42,2,7.0
+MIT,3,22,Female,4,8,9,7.9,8,4597,315,0.45,2,5,62.37,3,7.0
+University of Oxford,4,24,Female,9,3,8,4.4,9,6060,432,0.45,8,20,39.35,4,5.7
+University of Cambridge,5,20,Female,3,1,5,5.8,9,5693,458,0.72,7,4,27.45,5,10.6
+Yale University,6,25,Female,5,4,2,4.6,2,7891,558,0.73,9,20,91.78,6,8.0
+Princeton University,7,22,Male,3,2,5,8.3,6,8147,397,0.39,6,8,92.03,7,10.3
+Columbia University,8,22,Male,7,8,8,7.1,0,8739,336,0.9,5,10,70.65,8,5.2
+University of Chicago,9,24,Female,5,4,10,5.7,3,6627,517,0.46,3,2,47.12,9,5.5
+University of Pennsylvania,10,19,Female,9,2,9,4.3,3,4363,364,0.89,7,9,47.94,10,5.4
+California Institute of Technology,11,20,Male,7,6,9,5.6,4,4981,424,0.55,7,8,78.08,11,4.9
+"University of California, Berkeley",12,24,Male,2,6,1,5.6,6,8450,506,0.32,4,19,91.77,12,9.1
+Cornell University,13,20,Male,4,10,9,7.6,6,4663,433,0.51,8,9,90.97,13,5.9
+University of Michigan,14,20,Other,9,4,7,7.2,10,4529,371,0.68,9,2,82.39,14,7.8
+University of Toronto,15,25,Other,2,6,9,8.4,3,5038,351,0.71,9,12,71.36,15,8.1
+University of Edinburgh,16,22,Other,10,2,8,6.4,6,8592,514,0.62,2,19,26.73,16,6.5
+University of Melbourne,17,21,Female,9,10,1,4.6,10,6302,573,0.57,2,11,32.93,17,6.3
+National University of Singapore,18,25,Other,10,2,8,7.6,2,5237,359,0.63,5,4,91.88,18,6.3
+Peking University,19,25,Female,5,10,8,7.8,5,8504,295,0.66,4,8,68.51,19,6.1
+Tsinghua University,20,20,Female,2,4,3,6.8,1,8496,432,0.35,7,17,20.74,20,8.8
