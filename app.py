@@ -8,7 +8,7 @@ st.set_page_config(page_title="Green Wellbeing Predictor", layout="centered")
 st.title("🌿 Green Campus Wellbeing Predictor")
 
 # Upload dataset
-uploaded_file = st.file_uploader("Upload your wellbeing dataset (CSV or Excel)", type="csv")
+uploaded_file = st.file_uploader("university_student_wellbeing.csv", type="csv")
 
 if uploaded_file is not None:
     # Read the dataset
